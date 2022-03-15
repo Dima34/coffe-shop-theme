@@ -18,7 +18,7 @@ So far the cart is really basic. Remove is not yet working. Will need to add tha
 		{{ item.product.description | strip_html | truncate: 120 }}</div>
 		<div class="cart-item-price">{{ item.price | money }}</div>
 		<div class="cart-item-qty">{{ item.quantity }}</div>
-		<div class="cart-item-delete"><a href="#">Remove</a> </div>
+		<div class="cart-item-delete"><a href="{{ item.url_to_remove }}">Remove</a> </div>
 		<div class="cart-item-lineprice">{{ item.line_price | money }}</div>
 	</div>
 	{% endfor %}
