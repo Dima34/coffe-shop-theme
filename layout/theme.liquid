@@ -35,11 +35,16 @@
 	{% if cart.item_count != 0 %}
 		<div id="footer-cart">
 			<div class="wrapper">
-				<ul class="footer-cart__lineitem">
+				<ul class="footer-cart__lineitem-list">
 					{% for item in cart.items %}
 						<li>
-							<a href="{{item.url}}">
-								<img src="{{item.image | image_url: width: 32}}" alt="">
+							<a href="{{item.url}}" class="footer-cart__lineitem">
+								{% if item.quantity > 1 %}
+									<span>
+										{{item.quantity}}
+									</span>
+								{% endif %}								
+								<img src="{{item.image | image_url: width: 96}}" alt="">
 							</a>
 						</li>
 					{% endfor %}			
