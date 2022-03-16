@@ -62,6 +62,17 @@ header{
 main{
 	padding-top: 50px;
 	padding-bottom: 75px;
+	display: grid;
+	grid-template-columns: 50px 1fr;
+}
+
+aside{
+	width: 50px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: calc(100vh - 48px);
+	border-right: 1px solid #F4F4F4;
 }
 
 header .wrapper{
@@ -113,7 +124,6 @@ header .wrapper{
 	margin-top: 30px;
 	display: flex;
 	align-items: center;
-	gap: 8px;
 	margin-bottom: 15px;
 }
 
@@ -126,12 +136,20 @@ header .wrapper{
 	text-transform: uppercase;
 	color: #939393;
 	font-size: 14px;
+	padding-left: 8px;
 }
 
 .collection-list{
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+}
+
+.collection-list li{
+	margin-bottom: 15px;
+}
+
+.collection-list li:last-child{
+	margin-bottom: 0;
 }
 
 .collection-item{
@@ -141,10 +159,9 @@ header .wrapper{
 	border-radius: 8px;
 	padding: 16px;
 	display: flex;
-	gap: 15px;
 }
 
-.collection-item > img{
+.collection-item img{
 	flex-shrink: 0;
 	flex-grow: 0;
 	width: 90px;
@@ -158,6 +175,7 @@ header .wrapper{
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	margin-left: 15px;
 }
 
 .collection-item__info h2{
@@ -176,20 +194,25 @@ header .wrapper{
 .collection-item__info form{
 	display: block;
 	margin-left: auto;
+	margin-top: auto;
 }
 
 .collection-item__info button{
 	background: #F5F5F5;
+	color: black;
 	border-radius: 6px;
 	border: 0;
 	padding: 6px;
 	display: flex;
 	align-items: center;
-	gap: 5px;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
 	transition:box-shadow .2s linear, background-color .2s linear,color .1s linear;
+}
+
+.collection-item__info button svg{
+	margin-right: 5px;
 }
 
 .collection-item__info form:hover button,
@@ -225,19 +248,20 @@ header .wrapper{
 #footer-cart .wrapper{
 	display: flex;
 	align-items: center;
-	gap: 10px;
 }
 
 .footer-cart__lineitem-list{
 	width: 100%;
 	display: flex;
 	margin-left: auto;
-	gap: 15px;
 	overflow-y: auto;
 	padding: 15px;
 	padding-right: 5px;
 	border-radius: 50px;
-	padding-right: 20px;
+}
+
+.footer-cart__lineitem-list li{
+	margin-right: 15px;
 }
 
 .footer-cart__lineitem-list::-webkit-scrollbar {
@@ -297,23 +321,24 @@ header .wrapper{
 	z-index: 2;
 }
 
-
-
 .footer-cart__cart-link{
 	display: flex;
 	padding: 8px;
 	background: #4E5B63;
 	border-radius: 6px;
-	gap: 8px;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
 	color: #fff;
 	text-decoration: none;
 	flex-shrink: 0;
+	margin-left: 10px;
 	transition:box-shadow .2s linear, background-color .2s linear,color .1s linear;
 }
 
+.footer-cart__cart-link svg{
+	margin-right: 8px;
+}
 
 .footer-cart__cart-link:hover{
 	box-shadow: 0px 3px 5px rgba(0,0,0,.22);

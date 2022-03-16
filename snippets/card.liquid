@@ -1,0 +1,18 @@
+<div class='collection-item'>
+	{% render 'picture',img:product,  width: 90, height: 90 %}
+	<div class="collection-item__info">
+		<h2>{{product.title}}</h2>
+		<p>{{product.variants.first.weight}} гр</p>
+		
+		{%- form 'product', product -%}
+			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+			<button type="submit">
+				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M14.25 9.74848H9.75V14.2485H8.25V9.74848H3.75V8.24848H8.25V3.74848H9.75V8.24848H14.25V9.74848Z" fill="#00A3FF"/>
+				</svg>
+				{{product.price | money_with_currency}}
+			</button>
+			<input type="hidden" name="return_to" value="/" />
+		{%- endform -%}
+	</div>
+</div>

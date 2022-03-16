@@ -1,63 +1,26 @@
 <html>
 <head>
-  	{{ content_for_header }}
-  	<title>{{ shop.name }} - {{ page_title }}</title>
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	
-		<title>untitled</title>
+	{{ content_for_header }}
+	<title>{{ shop.name }} - {{ page_title }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>untitled</title>
 	{{ 'style.css'  | asset_url | stylesheet_tag }}
 </head>
 
 <body>
-	<header>
-		<div class="wrapper">
-			<a href="/" class="header__logo">
-				<img src="{{'logo.png' | asset_img_url: '156x96'}}" alt="">			
-			</a>
-	
-			<a href="/customers/login" class="header__profile">
-				<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M14.0003 0.666672C6.64033 0.666672 0.666992 6.64001 0.666992 14C0.666992 21.36 6.64033 27.3333 14.0003 27.3333C21.3603 27.3333 27.3337 21.36 27.3337 14C27.3337 6.64001 21.3603 0.666672 14.0003 0.666672ZM14.0003 4.66667C16.2137 4.66667 18.0003 6.45334 18.0003 8.66667C18.0003 10.88 16.2137 12.6667 14.0003 12.6667C11.787 12.6667 10.0003 10.88 10.0003 8.66667C10.0003 6.45334 11.787 4.66667 14.0003 4.66667ZM14.0003 23.6C12.4161 23.6 10.8566 23.208 9.4607 22.4589C8.06482 21.7097 6.87603 20.6268 6.00033 19.3067C6.04033 16.6533 11.3337 15.2 14.0003 15.2C16.6537 15.2 21.9603 16.6533 22.0003 19.3067C21.1246 20.6268 19.9358 21.7097 18.54 22.4589C17.1441 23.208 15.5845 23.6 14.0003 23.6Z" fill="#AEAEAE"/>
-				</svg>				
-			</a>
-		</div>		
-	</header>
+	{% section "header" %}
+
+	{% section "aside" %}
 
 	<main>
+		<div></div>
 		<div class="wrapper">	
-			<div class="content">
-				{{ content_for_layout }}
-			</div>
+			{{ content_for_layout }}
 		</div>
 	</main>
 
-	{% if cart.item_count != 0 %}
-		<div id="footer-cart">
-			<div class="wrapper">
-				<ul class="footer-cart__lineitem-list">
-					{% for item in cart.items %}
-						<li>
-							<a href="{{item.url}}" class="footer-cart__lineitem">
-								{% if item.quantity > 1 %}
-									<span>
-										{{item.quantity}}
-									</span>
-								{% endif %}								
-								<img src="{{item.image | image_url: width: 96}}" alt="">
-							</a>
-						</li>
-					{% endfor %}			
-				</ul>
-	
-				<a href="/cart" class="footer-cart__cart-link">
-					<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 3.5C9.5 2.83696 9.23661 2.20107 8.76777 1.73223C8.29893 1.26339 7.66304 1 7 1C6.33696 1 5.70107 1.26339 5.23223 1.73223C4.76339 2.20107 4.5 2.83696 4.5 3.5V4H9.5V3.5ZM10.5 3.5V4H14V14C14 14.5304 13.7893 15.0391 13.4142 15.4142C13.0391 15.7893 12.5304 16 12 16H2C1.46957 16 0.960859 15.7893 0.585786 15.4142C0.210714 15.0391 0 14.5304 0 14V4H3.5V3.5C3.5 2.57174 3.86875 1.6815 4.52513 1.02513C5.1815 0.368749 6.07174 0 7 0C7.92826 0 8.8185 0.368749 9.47487 1.02513C10.1313 1.6815 10.5 2.57174 10.5 3.5ZM9.854 8.854C9.94789 8.76011 10.0006 8.63278 10.0006 8.5C10.0006 8.36722 9.94789 8.23989 9.854 8.146C9.76011 8.05211 9.63278 7.99937 9.5 7.99937C9.36722 7.99937 9.23989 8.05211 9.146 8.146L6.5 10.793L5.354 9.646C5.30751 9.59951 5.25232 9.56264 5.19158 9.53748C5.13084 9.51232 5.06574 9.49937 5 9.49937C4.93426 9.49937 4.86916 9.51232 4.80842 9.53748C4.74768 9.56264 4.69249 9.59951 4.646 9.646C4.59951 9.69249 4.56264 9.74768 4.53748 9.80842C4.51232 9.86916 4.49937 9.93426 4.49937 10C4.49937 10.0657 4.51232 10.1308 4.53748 10.1916C4.56264 10.2523 4.59951 10.3075 4.646 10.354L6.146 11.854C6.19245 11.9006 6.24762 11.9375 6.30837 11.9627C6.36911 11.9879 6.43423 12.0009 6.5 12.0009C6.56577 12.0009 6.63089 11.9879 6.69163 11.9627C6.75238 11.9375 6.80755 11.9006 6.854 11.854L9.854 8.854Z" fill="white"/>
-					</svg>
-					{{ cart.total_price | money_with_currency  }}
-				</a>
-			</div>
-		</div>
-	{% endif %}
+	{% section "footer" %}
 </body>
 </html>
