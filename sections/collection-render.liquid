@@ -1,5 +1,3 @@
-{{ 'collection-render.css' | asset_url | stylesheet_tag }}
-
 {% for collection in collections %}
 	{% render 'collection' collection: collection %}
 {% endfor %}

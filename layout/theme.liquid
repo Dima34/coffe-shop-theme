@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<title>untitled</title>
+	{{ 'colors.css'  | asset_url | stylesheet_tag }}
+	{{ 'fonts.css'  | asset_url | stylesheet_tag }}
 	{{ 'style.css'  | asset_url | stylesheet_tag }}
 </head>
 

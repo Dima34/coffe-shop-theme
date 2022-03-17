@@ -1,3 +1,5 @@
+{{ "header.css" | asset_url | stylesheet_tag }}
+
 <div class="wrapper">
 	<a href="/" class="header__logo">
 		{% render 'picture-asset', img: "logo.png", width: 52, height: 32 %}

@@ -1,0 +1,30 @@
+.collection-heading{
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.collection-heading img{
+	width: 25px;
+	height: 25px;
+}
+
+.collection-heading h2{
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-left: 8px;
+}
+
+.collection-list{
+	display: flex;
+	flex-direction: column;
+}
+
+.collection-list li{
+	margin-bottom: 15px;
+}
+
+.collection-list li:last-child{
+	margin-bottom: 0;
+}
