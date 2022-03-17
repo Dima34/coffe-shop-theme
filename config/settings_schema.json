@@ -6,5 +6,23 @@
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
-  }
+  },
+	{
+		"name": "Colors",
+		"settings": [
+			{
+				"type": "color",
+				"id": "color_page_bg",
+				"label": "Page background",
+				"default": "#FEFEFE"
+			},
+			{
+				"type": "color",
+				"id": "border-color",
+				"label": "Border color",
+				"default": "#F4F4F4"
+			}
+			
+		]
+	}
 ]
