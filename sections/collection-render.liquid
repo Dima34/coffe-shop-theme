@@ -1,24 +1,7 @@
+{{ 'collection-render.css' | asset_url | stylesheet_tag }}
+
 {% for collection in collections %}
 	{% render 'collection' collection: collection %}
 {% endfor %}
-
-{% schema %}
-{
-  "name": "Collection list", 
-	"class": "collection-list",
-	"settings" : [
-		{
-			"type" : "range",
-			"min" : 0,
-			"max" : 100,
-			"step" : 1,
-			"unit" : "px",
-			"label" : "Card border radius",
-			"default" : 6,
-			"id" : "card-border-radius"			
-		}
-	]
-}
-{% endschema %}
 
 
