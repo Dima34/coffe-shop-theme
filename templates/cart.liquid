@@ -1,27 +1,86 @@
-<!-- Cart.liquid v0.1 -->
-<h2>Your Cart</h2>
-{% if cart.item_count == 0 %}
- <!-- If the customer has nothing in their cart do this -->
-You have nothing in your cart.
-  {% else %}
- <!-- If the customer does have something their cart do this 
+{% layout 'cart-layout' %}
 
-So far the cart is really basic. Remove is not yet working. Will need to add that functionality in with javascript.
+{{ "cart.css" | asset_url | stylesheet_tag }}
 
--->
+<div class="cart__heading">
+	<a href="/" class="back-link">
+		<svg width="25" height="25" class="d-block" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20 11H7.5L13.42 5.41L12 4L4.5 11C4.5 11 4 11.5 4 12C4 12.5 4.5 13 4.5 13L12 20L13.41 18.59L7.5 13H20V11Z" fill="#999999"/>
+		</svg>		
+	</a>
 
-<div class="cart">
-	{% for item in cart.items %}
-	<div class="cart-item">
-		<div class="cart-item-image"><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></div>
-		<div class="cart-item-name"><a href="{{ item.product.url }}">{{ item.title }}</a></p>
-		{{ item.product.description | strip_html | truncate: 120 }}</div>
-		<div class="cart-item-price">{{ item.price | money }}</div>
-		<div class="cart-item-qty">{{ item.quantity }}</div>
-		<div class="cart-item-delete"><a href="{{ item.url_to_remove }}">Remove</a> </div>
-		<div class="cart-item-lineprice">{{ item.line_price | money }}</div>
-	</div>
-	{% endfor %}
+	<h1 class="black">Ваш заказ</h1>
 </div>
 
+
+{% if cart.item_count == 0 %}
+	You have nothing in your cart.
 {% endif %}
+
+<div class="cart">
+
+	<form action="{{ routes.cart_url }}" method="post">
+		{% for item in cart.items %}
+
+		<div class="cart-item">
+			
+			<div class="cart-item__content">
+				<div class="cart-item-image">
+					{% render "picture" img: item, width: 40, height: 40 %}
+				</div>
+
+				<div class="cart-item__info">
+					<h2>
+						<a class="black" href="{{ item.product.url }}">{{ item.title }}</a>
+					</h2>
+
+					<p class="cart-item__weight gray-600">{{ item.grams }} гр</p>	
+				</div>
+			</div>
+			
+			<div class="cart-item__footer">
+				<div class="cart-item__quantity-selection">
+					<button class="cart-item__quantity-change cart-item__quantity-increase" >
+						<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="13" cy="13" r="12.5" stroke="black"/>
+							<path d="M17.6663 13.6654H13.6663V17.6654H12.333V13.6654H8.33301V12.332H12.333V8.33203H13.6663V12.332H17.6663V13.6654Z" fill="#040404"/>
+						</svg>						
+					</button>
+					<input class="black" type="number" min="1" name="updates[]" value="{{ item.quantity }}">
+					<button class="cart-item__quantity-change cart-item__quantity-decrease" {% if item.quantity < 2 %} disabled = ""{% endif %}>
+						<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="13" cy="13" r="12.5" stroke="black"/>
+							<path d="M17.6663 13.6654H8.33301V12.332H17.6663V13.6654Z" fill="black"/>
+						</svg>						
+					</button>
+				</div>
+
+				<p class="cart-item__price black">{{ item.line_price | money_with_currency }}</p>
+			</div>
+
+			<a class="cart-item__remove" href="{{ item.url_to_remove }}">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#989898"/>
+				</svg>				
+			</a>
+		</div>
+
+		{% endfor %}
+
+		<input class="visually-hidden" id="update-cart" type="submit" value="Update cart">
+		
+		<div class="cart__footer">
+			<div class="wrapper">
+				<h2 class="black">
+					К оплате: <span>{{ cart.total_price | money_with_currency }}</span> 
+				</h2>
+	
+				<input class="button white black-bg" type="submit" name="checkout" value="Checkout">
+			</div>			
+		</div>
+	</form>
+	
+</div>
+
+
+{{ 'cart.js'  | asset_url | script_tag }}

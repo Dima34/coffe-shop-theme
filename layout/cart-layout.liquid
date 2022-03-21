@@ -1,27 +1,18 @@
 <html>
-
 <head>
 	{{ content_for_header }}
 	{% section 'head' %}
 </head>
-
 <body>
 	{% section "header" %}
 
-	{% section "aside" %}
-
-	<main>
+	<main class="cart-main">
 		<div class="wrapper">
-			<div></div>
 			<div>
 				{{ content_for_layout }}
 			</div>
 		</div>		
 	</main>
-		
-	{% if cart.item_count != 0 %}
-		{% section "footer" %}
-	{% endif %}
 
 </body>
 </html>

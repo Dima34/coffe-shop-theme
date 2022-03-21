@@ -1,24 +1,4 @@
-.product__back-link{
-	margin-top: 15px;
-	display: inline-block;
-	margin-bottom: 15px;
-}
 
-.product__back-link svg{
-	display: block;
-}
-
-.product__back-link svg path{
-	transition: fill .3s;
-}
-
-.product__back-link:hover svg path{
-	fill: var(--blue);
-}
-
-.product__back-link:active svg path{
-	fill: var(--lightblue);
-}
 
 .product__image img{
 	display: block;
@@ -67,11 +47,10 @@
 	border-radius: 6px;
 	padding: 7px 0;
 	display: flex;
-	justify-content: space-between;
 }
 
 .product__stat{
-	width: 33.33%;
+	width: 25%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -91,45 +70,7 @@
 
 .product__buy-btn{
 	width: 100%;
-	display: block;
-	padding: 10px;
-	display: flex;
-	justify-content: center;
 	margin-top: 30px;
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 20px;
-	border:0;
-	border-radius: 6px;
-	transition:box-shadow .2s linear, background-color .2s linear,color .1s linear;
-}
-
-.product__buy-btn svg{
-	margin-right: 5px;
-}
-
-.product__buy-btn:hover{
-	box-shadow: 0px 3px 5px rgba(0,0,0,.22);
-	background-color: var(--blue);
-	color: var(--white);
-}
-
-.product__buy-btn:active{
-	box-shadow: 0px 0px 0px rgba(0,0,0,.22);
-	background-color: var(--lightblue);
-	color: var(--white);
-}
-
-.product__buy-btn:active svg path{
-	fill: var(--white);
-}
-
-.product-card__info form svg path{
-	transition: .15s linear;
-}
-
-.product__buy-btn:hover svg path{
-	fill: var(--white);
 }
 
 .product__buy-btn span{
@@ -137,8 +78,5 @@
 	align-items: center;
 }
 
-.product__buy-btn svg{
-	margin-right: 4px;
-}
 
 
