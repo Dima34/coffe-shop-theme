@@ -1,0 +1,16 @@
+{{ "cart-heading.css" | asset_url | stylesheet_tag }}
+
+{% render 'back-link' %}
+
+{% if cart.item_count == 0 %}
+	<h1 class="black">Корзина пуста</h1>
+{% else %}
+	<h1 class="black">Ваш заказ</h1>
+{% endif %}
+
+{% schema %}
+	{
+		"name": "Cart heading",
+		"class": "cart__heading"
+	}
+{% endschema %}

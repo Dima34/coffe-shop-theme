@@ -1,0 +1,18 @@
+{{ "cart-footer.css" | asset_url | stylesheet_tag }}
+
+{% unless cart.item_count == 0 %}
+	<div class="wrapper">
+		<h2 class="black">
+			К оплате: <span>{{ cart.total_price | money_with_currency }}</span> 
+		</h2>
+	
+		<input class="button white black-bg" type="submit" name="checkout" value="Checkout">
+	</div>	
+{% endunless %}
+
+{% schema %}
+	{
+		"name": "Cart footer",
+		"class": "cart__footer"
+	}
+{% endschema %}

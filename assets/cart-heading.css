@@ -1,0 +1,21 @@
+.cart__heading{
+	display: flex;
+	position: relative;
+	justify-content: center;
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+.cart__heading h1{
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+}
+
+.cart__heading a{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+}
