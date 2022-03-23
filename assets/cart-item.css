@@ -93,6 +93,10 @@
 	transition: .3s;
 }
 
+.cart-item__quantity-change:not([disabled]):focus{
+	border-radius: 50%;
+}
+
 .cart-item__quantity-change:not([disabled]):hover circle{
 	stroke: var(--blue);
 }
