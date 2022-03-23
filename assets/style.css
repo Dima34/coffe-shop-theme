@@ -107,18 +107,18 @@ aside{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 10px;
+	padding: 8px;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
-	border:0;
+	border:2px solid var(--gray-300);
 	border-radius: 6px;
-	transition:box-shadow .2s linear, background-color .2s linear,color .1s linear;
+	transition:box-shadow .2s linear, background-color .2s linear,color .1s linear,border-color .2s linear;
 }
 
 .button:disabled{
 	background: var(--gray-300);
-	outline: 2px solid var(--gray-400);
+	border: 2px solid var(--gray-400);
 	color: var(--gray-500);
 	cursor: default;
 }
@@ -134,12 +134,14 @@ aside{
 .button:not([disabled]):hover{
 	box-shadow: 0px 3px 5px rgba(0,0,0,.22);
 	background-color: var(--blue);
+	border-color: var(--blue);
 	color: var(--white);
 }
 
 .button:not([disabled]):active{
 	box-shadow: 0px 0px 0px rgba(0,0,0,.22);
 	background-color: var(--lightblue);
+	border-color: var(--lightblue);
 	color: var(--white);
 }
 
