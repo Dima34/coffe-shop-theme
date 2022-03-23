@@ -111,6 +111,8 @@
 	position: absolute;
 	right: 10px;
 	top: 10px;
+	background: 0;
+	border: 0;
 }
 
 .cart-item__remove path{
@@ -153,6 +155,10 @@
 	margin: 0;
 	background: 0;
 	border: 0;
+}
+
+.cart-item__quantity-change svg{
+	pointer-events: none;
 }
 
 .cart-item__quantity-change circle,

@@ -1,8 +1,3 @@
-function getCartItems() {
-	return	fetch(window.Shopify.routes.root + 'cart.js')
-		.then(response => response.json())
-}
-
 function makePostRequest(body) {
 	console.log(body);
 	return fetch(window.Shopify.routes.root + 'cart/add.js', {
@@ -14,37 +9,6 @@ function makePostRequest(body) {
 	})
 	.then(res => { 
 		return res.json().then(data=>{console.log(data);  rerenderSections(data.sections)}) 
-	})
-	.catch((error) => {
-		console.error('Error:', error);
-	});
-}
-
-function makeSectionRequest(sectionName){
-	fetch(window.Shopify.routes.root + "?sections=cart-lineitem")
-  .then((response) => {
-    return response.json();
-  })
-  .then((section) => {
-    rerenderSections(section)
-  });
-}
-
-function makeUpdateRequest(id, quantity) {
-	let formData = {
-		'updates': {
-			[id]: quantity
-		}
-	};
-
-	return fetch(window.Shopify.routes.root + 'cart/update.js', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(formData)
-	}).then(()=>{
-		makeSectionRequest("cart-lineitem")
 	})
 	.catch((error) => {
 		console.error('Error:', error);
@@ -63,12 +27,11 @@ function addItemToCart(id) {
 	makePostRequest(formData)
 }
 
-function updateItem(event, id, quantity) {
+function deleteitem(event, id) {
 	event.preventDefault()
 	
-	makeUpdateRequest(id, quantity)
+	makeUpdateRequest({[id] : 0})
 }
-
 
 function htmlToElement(html) {
 	var template = document.createElement('template');
@@ -77,16 +40,52 @@ function htmlToElement(html) {
 	return template.content.firstChild;
 }
 
-function rerenderSections(sections) {
+function makeUpdateRequest(updateObj, sectionLine) {
+	return new Promise(function(resolve, reject) {
+		let formData = {
+			'updates': updateObj
+		};
 
-	for (key in sections) {
-		let newSection = htmlToElement(sections[key])
-		let sectionId = newSection.getAttribute("id")
-
-		let oldSection = document.getElementById(sectionId);
-		console.log(newSection);
-		oldSection.replaceWith(newSection)
-	}
+		console.log(sectionLine);
+	
+		fetch(window.Shopify.routes.root + 'cart/update.js', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formData)
+		}).then(()=>{
+			makeSectionRequest(sectionLine).then(resolve)
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+  })	
 }
 
+function makeSectionRequest(sectionName){
+	return new Promise(function(resolve, reject) {
+		fetch(window.Shopify.routes.root + `?sections=${sectionName}`)
+		.then((response) => {
+			response.json().then((section) => {
+				rerenderSections(section).then(resolve)
+			});
+		})
+	})	
+}
 
+function rerenderSections(sections) {
+	return new Promise((resolve, reject)=>{
+		for (key in sections) {
+			let newSection = htmlToElement(sections[key])
+			let sectionId = newSection.getAttribute("id")
+	
+			let oldSection = document.getElementById(sectionId);
+			console.log(newSection);
+			oldSection.replaceWith(newSection)
+		}
+
+		console.log(`section rerendered`);
+		resolve()
+	})
+}

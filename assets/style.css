@@ -83,6 +83,10 @@ aside{
 	margin-bottom: 15px;
 }
 
+.text-center{
+	text-align: center;
+}
+
 .back-link svg{
 	display: block;
 }
