@@ -41,19 +41,16 @@ ul{
 	margin: 0;
 }
 
+input:focus{
+	outline-color: var(--lightblue);
+}
+
 main .wrapper{
 	padding: 0;
 	padding-top: 60px;
 	padding-bottom: 75px;
 	display: grid;
 	grid-template-columns: 50px 1fr;
-}
-
-.cart-main .wrapper{
-	display: block;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-bottom: 130px;
 }
 
 main .wrapper > div:nth-of-type(2){

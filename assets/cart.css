@@ -1,3 +1,10 @@
+.cart-main .wrapper{
+	display: block;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 130px;
+}
+
 .cart form{
 	display: block;
 }
@@ -34,8 +41,8 @@
 }
 
 .cart__footer .wrapper{
-	padding-top: 15px;
-	padding-bottom:32px;
+	padding-top: 30px;
+	padding-bottom:20px;
 }
 
 .cart__footer h2{
@@ -164,6 +171,10 @@
 .cart-item__quantity-change circle,
 .cart-item__quantity-change path{
 	transition: .3s;
+}
+
+.cart-item__quantity-change:not([disabled]):focus{
+	border-radius: 50%;
 }
 
 .cart-item__quantity-change:not([disabled]):hover circle{
