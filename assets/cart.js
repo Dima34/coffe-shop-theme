@@ -8,18 +8,12 @@ function updateCart() {
 	updateButton.click()
 }
 
-function count(){
-	clearInterval(timeout)
-	timeout = setTimeout(updateCart, 1000);
-}
-
 function interaction(button, increase){
 	const input = button.parentNode.querySelector("input")
 	const min = 1;
 
 	button.addEventListener("click", (e)=>{
 		e.preventDefault()
-		count()
 
 		if(increase){
 			input.value++

@@ -1,4 +1,4 @@
-{{ "footer.css" | asset_url | stylesheet_tag }}
+{% if cart.item_count != 0 %}
 
 <div class="wrapper">
 	<ul class="footer-cart__lineitem-list">
@@ -23,6 +23,9 @@
 		{{ cart.total_price | money_with_currency  }}
 	</a>
 </div>
+
+{% endif %}
+
 
 {% schema %}
 {

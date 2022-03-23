@@ -1,0 +1,47 @@
+{% for item in cart.items %}
+
+	<div class="cart-item">
+		
+		<div class="cart-item__content">
+			<div class="cart-item-image">
+				{% render "picture" img: item, width: 40, height: 40 %}
+			</div>
+
+			<div class="cart-item__info">
+				<h2>
+					<a class="black" href="{{ item.product.url }}">{{ item.title }}</a>
+				</h2>
+
+				<p class="cart-item__weight gray-600">{{ item.grams }} гр</p>	
+			</div>
+		</div>
+		
+		<div class="cart-item__footer">
+			<div class="cart-item__quantity-selection">
+				<button class="cart-item__quantity-change cart-item__quantity-increase" >
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="13" cy="13" r="12.5" stroke="black"/>
+						<path d="M17.6663 13.6654H13.6663V17.6654H12.333V13.6654H8.33301V12.332H12.333V8.33203H13.6663V12.332H17.6663V13.6654Z" fill="#040404"/>
+					</svg>						
+				</button>
+				<input class="black" type="number" min="1" name="updates[]" value="{{ item.quantity }}">
+				<button class="cart-item__quantity-change cart-item__quantity-decrease" {% if item.quantity < 2 %} disabled = ""{% endif %}>
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="13" cy="13" r="12.5" stroke="black"/>
+						<path d="M17.6663 13.6654H8.33301V12.332H17.6663V13.6654Z" fill="black"/>
+					</svg>						
+				</button>
+			</div>
+
+			<p class="cart-item__price black">{{ item.line_price | money_with_currency }}</p>
+		</div>
+		
+
+		<button class="cart-item__remove" onclick="updateItem(event,{{item.id}}, 0)">
+			<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#989898"/>
+			</svg>				
+		</button>
+	</div>
+
+{% endfor %}

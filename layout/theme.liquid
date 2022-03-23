@@ -3,6 +3,7 @@
 <head>
 	{{ content_for_header }}
 	{% section 'head' %}
+	{{ "footer.css" | asset_url | stylesheet_tag }}
 </head>
 
 <body>
@@ -19,9 +20,9 @@
 		</div>		
 	</main>
 		
-	{% if cart.item_count != 0 %}
-		{% section "footer" %}
-	{% endif %}
+	{% section "footer" %}
 
 </body>
+
+{{ "cart-api.js" | asset_url | script_tag }}
 </html>
