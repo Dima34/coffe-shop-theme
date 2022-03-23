@@ -9,13 +9,12 @@
 		</svg>		
 	</a>
 
-	<h1 class="black">Ваш заказ</h1>
+	{% if cart.item_count == 0 %}
+		<h1 class="black">Корзина пуста</h1>
+	{% else %}
+		<h1 class="black">Ваш заказ</h1>
+	{% endif %}
 </div>
-
-
-{% if cart.item_count == 0 %}
-	You have nothing in your cart.
-{% endif %}
 
 <div class="cart">
 
@@ -70,13 +69,15 @@
 		<input class="visually-hidden" id="update-cart" type="submit" value="Update cart">
 		
 		<div class="cart__footer">
-			<div class="wrapper">
-				<h2 class="black">
-					К оплате: <span>{{ cart.total_price | money_with_currency }}</span> 
-				</h2>
-	
-				<input class="button white black-bg" type="submit" name="checkout" value="Checkout">
-			</div>			
+			{% unless cart.item_count == 0 %}
+				<div class="wrapper">
+					<h2 class="black">
+						К оплате: <span>{{ cart.total_price | money_with_currency }}</span> 
+					</h2>
+				
+					<input class="button white black-bg" type="submit" name="checkout" value="Checkout">
+				</div>	
+			{% endunless %}
 		</div>
 	</form>
 	
