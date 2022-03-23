@@ -3,6 +3,8 @@
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	background: var(--white);
+	filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.04));
 }
 
 .cart__footer .wrapper{
