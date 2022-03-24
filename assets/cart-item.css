@@ -1,0 +1,142 @@
+.cart-item{
+	position: relative;
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid var(--gray-300);
+	box-shadow: 0 2px 13px #0000000d;
+	border-radius: 6px;
+}
+
+.cart-item-image img{
+	border-radius: 50%;
+}
+
+.cart-item__content{
+	display: flex;
+}
+
+.cart-item__info{
+	margin-left: 15px;
+}
+
+.cart-item__info a{
+	font-size: 14px;
+	line-height: 20px;
+	padding-right: 30px;
+	display: inline-block;
+	transition: color .3s;
+}
+
+.cart-item__info a:hover{
+	color: var(--gray-500);
+}
+
+.cart-item__info a:active{
+	color: var(--blue);
+}
+
+.cart-item__weight{
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.cart-item__remove{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: 0;
+	border: 0;
+}
+
+.cart-item__remove path{
+	transition: fill .3s;
+}
+
+.cart-item__remove:hover path{
+	fill: var(--black);
+}
+
+.cart-item__remove:active path{
+	fill: var(--gray-400);
+}
+
+.cart-item__footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.cart-item__quantity-selection{
+	display: flex;
+	align-items: center;
+}
+
+.cart-item__quantity-selection input{
+	margin: 0 2px;
+	text-align: center;
+	border: 0;
+	width: 26px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.cart-item__quantity-change{
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	background: 0;
+	border: 0;
+}
+
+.cart-item__quantity-change svg{
+	pointer-events: none;
+}
+
+.cart-item__quantity-change circle,
+.cart-item__quantity-change path{
+	transition: .3s;
+}
+
+.cart-item__quantity-change:not([disabled]):focus{
+	border-radius: 50%;
+}
+
+.cart-item__quantity-change:not([disabled]):hover circle{
+	stroke: var(--blue);
+}
+
+.cart-item__quantity-change:not([disabled]):hover path{
+	fill: var(--blue);
+}
+
+.cart-item__quantity-change:not([disabled]):active circle{
+	stroke: var(--gray-500);
+}
+
+.cart-item__quantity-change:not([disabled]):active path{
+	fill: var(--gray-500);
+}
+
+.cart-item__quantity-change:disabled{
+	cursor: default;
+	opacity: .3;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.cart-item__price{
+	font-size: 14px;
+	line-height: 20px;
+}

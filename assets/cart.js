@@ -1,5 +1,6 @@
 let timeout;
 let quantityBlocks
+let sectionsToUpdate = "cart-header,cart-main"
 
 function quantityBlocksUpdate(){
 	quantityBlocks = document.querySelectorAll(".cart-item__quantity-selection")
@@ -55,12 +56,12 @@ function updateCart(quantityBlocks) {
 			queryObject[id] = value
 		});
 
-    makeUpdateRequest(queryObject, "cart-lineitem,cart-header,cart-footer").then(resolve)
+    makeUpdateRequest(queryObject, sectionsToUpdate).then(resolve)
   })
 }
 
 function deleteItem(id) {
-	makeUpdateRequest({[id]:0}, "cart-lineitem,cart-header,cart-footer").then(main)
+	makeUpdateRequest({[id]:0}, sectionsToUpdate).then(main)
 }
 
 function main(){

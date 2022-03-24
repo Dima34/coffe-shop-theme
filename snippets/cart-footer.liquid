@@ -1,4 +1,5 @@
-{% unless cart.item_count == 0 %}
+<div class="cart__footer">
+	{% unless cart.item_count == 0 %}
 	<div class="wrapper">
 		<h2 class="black">
 			К оплате: <span>{{ cart.total_price | money_with_currency }}</span> 
@@ -7,13 +8,4 @@
 		<input class="button white black-bg" type="submit" name="checkout" value="Checkout">
 	</div>
 {% endunless %}
-
-
-	
-
-{% schema %}
-	{
-		"name": "Cart Footer",
-		"class": "cart__footer"
-	}
-{% endschema %}
+</div>

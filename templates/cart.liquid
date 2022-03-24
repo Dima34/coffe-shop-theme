@@ -1,18 +1,14 @@
 {% layout 'cart-layout' %}
 
 {{ "cart.css" | asset_url | stylesheet_tag }}
+{{ "cart-heading.css" | asset_url | stylesheet_tag }}
+{{ "cart-footer.css" | asset_url | stylesheet_tag }}
+{{ "cart-item.css" | asset_url | stylesheet_tag }}
+
 
 
 {% section "cart-header" %}
-
-<div class="cart">
-
-	<form action="{{ routes.cart_url }}" method="post">
-		{% section "cart-lineitem" %}		
-		{% section "cart-footer" %}
-	</form>
-	
-</div>
+{% section 'cart-main' %}
 
 
 {{ "cart-api.js" | asset_url | script_tag }}
