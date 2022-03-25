@@ -31,10 +31,12 @@ function addItemToCart(id) {
 	makePostRequest(formData).then(()=>(setTimeout(disableLoading, 500)));
 }
 
-function deleteitem(event, id) {
-	event.preventDefault()
+function deleteItem(id) {
+	enableLoading()
 	
-	makeUpdateRequest({[id] : 0})
+	makeUpdateRequest({[id]:0}, sectionsToUpdate)
+		.then(main)
+		.then(()=>(setTimeout(disableLoading, 500)))
 }
 
 function htmlToElement(html) {
@@ -49,8 +51,6 @@ function makeUpdateRequest(updateObj, sectionLine) {
 		let formData = {
 			'updates': updateObj
 		};
-
-		console.log(sectionLine);
 	
 		fetch(window.Shopify.routes.root + 'cart/update.js', {
 			method: 'POST',
@@ -85,11 +85,9 @@ function rerenderSections(sections) {
 			let sectionId = newSection.getAttribute("id")
 	
 			let oldSection = document.getElementById(sectionId);
-			console.log(newSection);
 			oldSection.replaceWith(newSection)
 		}
 
-		console.log(`section rerendered`);
 		resolve()
 	})
 }

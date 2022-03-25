@@ -65,10 +65,6 @@ function updateCart(quantityBlocks) {
   })
 }
 
-function deleteItem(id) {
-	makeUpdateRequest({[id]:0}, sectionsToUpdate).then(main)
-}
-
 function main(){
 	quantityBlocksUpdate()
 	let cartRemoveButtons = document.querySelectorAll("[data-cart-remove]")
