@@ -8,7 +8,7 @@
 
 <body>
 	{% section "header" %}
-
+	
 	{% section "aside" %}
 
 	<main>
@@ -24,5 +24,7 @@
 
 </body>
 
+{{ "loading.js" | asset_url | script_tag }}
 {{ "cart-api.js" | asset_url | script_tag }}
+
 </html>

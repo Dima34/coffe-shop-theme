@@ -12,7 +12,12 @@ function startCount(callback){
 }
 
 function checkButtonsAndStartCount(input, increaseBtn, decreaseBtn, min, max) {
-	startCount(()=>{updateCart(quantityBlocks).then(main)})
+	startCount(()=>{
+		enableLoading(); 
+		updateCart(quantityBlocks)
+			.then(main)
+			.then(disableLoading)
+	})
 	checkButtons(input, increaseBtn, decreaseBtn, min, max)
 }
 

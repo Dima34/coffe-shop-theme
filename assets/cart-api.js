@@ -1,21 +1,25 @@
 function makePostRequest(body) {
-	console.log(body);
-	return fetch(window.Shopify.routes.root + 'cart/add.js', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(body)
+	return new Promise((resolve, reject)=>{
+		fetch(window.Shopify.routes.root + 'cart/add.js', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(body)
+		})
+		.then(res => { 
+			res.json().then(data=>{console.log(data); rerenderSections(data.sections).then(resolve()) })
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+			reject(error)
+		});
 	})
-	.then(res => { 
-		return res.json().then(data=>{console.log(data);  rerenderSections(data.sections)}) 
-	})
-	.catch((error) => {
-		console.error('Error:', error);
-	});
 }
 
 function addItemToCart(id) {
+	enableLoading()
+
 	let formData = {
 		'items': [{
 		 'id': id,
@@ -24,7 +28,7 @@ function addItemToCart(id) {
 		sections: "footer"
 	};
 
-	makePostRequest(formData)
+	makePostRequest(formData).then(()=>(setTimeout(disableLoading, 500)));
 }
 
 function deleteitem(event, id) {

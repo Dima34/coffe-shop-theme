@@ -22,7 +22,7 @@
 					<path d="M17.6663 13.6654H13.6663V17.6654H12.333V13.6654H8.33301V12.332H12.333V8.33203H13.6663V12.332H17.6663V13.6654Z" fill="#040404"/>
 				</svg>						
 			</button>
-			<input class="black" type="number" min="1" max='15' name="updates[]" value="{{ item.quantity }}">
+			<input class="black" type="number" min="1" name="updates[]" value="{{ item.quantity }}">
 			<button data-quantity-decrease class="cart-item__quantity-change cart-item__quantity-decrease" {% if item.quantity < 2 %} disabled = ""{% endif %}>
 				<svg width="26" height="26" viewBox="0 0 26 26"} fill="none" xmlns="http://www.w3.org/2000/svg">
 					<circle cx="13" cy="13" r="12.5" stroke="black"/>
