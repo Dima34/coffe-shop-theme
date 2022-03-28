@@ -50,20 +50,11 @@ main .wrapper{
 	padding-top: 60px;
 	padding-bottom: 75px;
 	display: grid;
-	grid-template-columns: 50px 1fr;
+	grid-template-columns: 0px 1fr;
 }
 
 main .wrapper > div:nth-of-type(2){
 	padding:0 15px;
-}
-
-aside{
-	width: 50px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	height: calc(100vh - 48px);
-	border-right: 1px solid var(--gray-300);
 }
 
 .wrapper{

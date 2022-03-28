@@ -1,14 +1,14 @@
-{{ 'collection.css' | asset_url | stylesheet_tag }}
-
-<div class = "collection-heading">
-	{% render 'picture',img:collection.image,  width: 25, height: 25 %}
-	<h2 class="gray-500">{{collection.title}}</h2>
+<div class="collection" id="collection-{{collection.id}}">
+	<div class = "collection-heading">
+		{% render 'picture',img:collection.image,  width: 25, height: 25 %}
+		<h2 class="gray-500">{{collection.title}}</h2>
+	</div>
+	
+	<ul class="collection-list">
+		{% for product in collection.products %}
+			<li>
+				{% render "product-card", product: product, section:section %}
+			</li>
+		{% endfor %}
+	</ul>
 </div>
-
-<ul class="collection-list">
-	{% for product in collection.products %}
-		<li>
-			{% render "product-card", product: product, section:section %}
-		</li>
-	{% endfor %}
-</ul>

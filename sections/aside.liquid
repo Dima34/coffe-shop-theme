@@ -1,3 +1,7 @@
 <aside>
-				
+	{% for collection in collections %}
+		<a class="aside-button" href="#collection-{{collection.id}}" class="aside-button">
+			{% render 'picture', img: collection, width: 40, height: 40 %}
+		</a>
+	{% endfor %}
 </aside>
