@@ -3,12 +3,15 @@ on: [push]
 jobs:
   lhci:
     name: Lighthouse
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Lighthouse
-      uses: shopify/lighthouse-ci-action@v1
-      with:
-        access_token: ${{ secrets.SHOP_ACCESS_TOKEN }}
-        store: ${{ secrets.SHOP_STORE }}
-        password: ${{ secrets.SHOP_PASSWORD }}
+      - uses: actions/checkout@v2
+      - name: Lighthouse
+        uses: shopify/lighthouse-ci-action@v1
+        with:
+          store: ${{ secrets.SHOP_STORE }}
+          access_token: ${{ secrets.SHOP_ACCESS_TOKEN }}
+          lhci_github_app_token: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          lhci_min_score_performance: 0.9
+          lhci_min_score_accessibility: 0.9
+
